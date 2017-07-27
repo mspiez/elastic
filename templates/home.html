@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Headlines</title>
+    </head>
+    <body>
+		<h1>Batch search</h1>
+		<form>
+		Batch ID: <select name="batchID">
+			{% for batch in batches %}
+				<option value="{{batch}}">
+					{{batch}}</option>
+			{% endfor %}
+			</select>
+		Batch ID: {{ batchID }}
+		<input type="submit" value="Submit">
+		</form>
+		<form>
+			<input type="text" name="batchID" placeholder="search" />
+			<input type="submit" value="Submit" />
+		</form>
+		{% for row in mapping %}
+			<ul>
+				<li>Source Node: {{ row._source.source_node }}
+				Source Port: {{ row._source.source_port }}
+				Target Node: {{ row._source.target_node }}
+				Target Port: {{ row._source.target_port }}
+				Migration Eng: {{ row._source.migration_eng }}</li>
+			</ul>
+		{% endfor %}
+    </body>
+</html>
